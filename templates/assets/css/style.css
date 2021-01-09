@@ -1,0 +1,257 @@
+/* Common */
+
+:root {
+    --color-bg: #f4f3ea;
+    --color-light: #cbd0d8;
+    --color-accent: #d3ac2b;
+    --color-dark: #333d51;
+}
+* {
+    box-sizing: border-box;
+    margin: 0;
+    padding: 0;
+}
+
+.full-width-bar {
+    margin: 0 -99em;
+    padding: .5em 99em;
+    background-color: var(--color-dark);
+}
+
+.flex-list {
+    list-style: none;
+    display: flex;
+    flex-wrap: wrap;
+}
+
+.btn {
+    display: inline-block;
+    padding: .5em;
+    font-size: .9em;
+    color: var(--color-dark);
+    border: 1px solid;
+    text-transform: uppercase;
+    transition: background-color .3s;
+}
+
+.btn:hover,
+.btn:focus {
+    background-color: var(--color-light);
+}
+
+.btn:active {
+    background-color: var(--color-accent);
+}
+
+.no-border {
+    border: none;
+}
+
+/* Adaptive layout */
+
+body {
+    overflow-x: hidden;
+    font-family: Roboto, sans-serif;
+    font-size: 14px;
+    font-weight: normal;
+    padding: 0 1.5em;
+    min-height: 100vh;
+    background-color: var(--color-bg);
+    display: grid;
+    grid-gap: 2em;
+    grid-template-rows: max-content auto auto max-content;
+    grid-template-areas:
+        "header"
+        "content"
+        "sidebar"
+        "footer";
+}
+
+@media (min-width: 768px) {
+    body {
+        padding: 0 10%;
+        font-size: 16px;
+        grid-template-columns: 3fr 1fr;
+        grid-template-rows: max-content auto max-content;
+        grid-template-areas:
+            "header header"
+            "content sidebar"
+            "footer footer";
+    }
+}
+
+/* Site header */
+
+.header {
+    grid-area: header;
+    height: 4.5em;
+    display: flex;
+    align-items: center;
+    justify-content: space-between;
+}
+
+.header__logo {
+    background: left / contain url("../logo.svg") no-repeat;
+    font-size: 1.5em;
+    padding-left: 2.2em;
+    line-height: 2em;
+    text-transform: uppercase;
+    text-decoration: none;
+    font-style: italic;
+    font-weight: bold;
+    letter-spacing: -2px;
+}
+.header__logo a {
+    color: var(--color-accent);
+    text-decoration: none;
+}
+
+.header__login {
+    padding: 0 1em;
+    line-height: 2em;
+    color: var(--color-light);
+    text-decoration: none;
+    text-transform: uppercase;
+    border: 1px solid var(--color-light);
+    transition: box-shadow .3s;
+}
+
+.header__login:hover,
+.header__login:focus {
+    box-shadow: 0 0 0 2px #fff;
+    color: #fff;
+}
+
+.header__login:active {
+    color: var(--color-dark);
+    background-color: var(--color-light);
+}
+
+/* Main section */
+
+.content {
+    grid-area: content;
+    color: var(--color-dark);
+}
+
+.content h2 {
+    font-size: 2em;
+    line-height: 1.2;
+    letter-spacing: -1px;
+    margin-bottom: 2em;
+    font-weight: bold;
+}
+
+.articles-list {
+    list-style: none;
+    display: grid;
+    grid-template-columns: repeat(auto-fill, minmax(280px, 1fr));
+    grid-gap: 1em;
+
+}
+
+.article-preview {
+    background-color: #fff;
+    color: var(--color-dark);
+    border: 1px solid;
+    padding: 1em;
+    display: grid;
+    grid-gap: 1em;
+}
+
+.article-preview img {
+    width: 100%;
+    object-fit: cover;
+}
+
+.article-preview h3 {
+    font-size: 1.5em;
+    font-weight: bold;
+    color: #000;
+}
+
+.article-preview section {
+    display: flex;
+    flex-wrap: wrap;
+    font-size: .8em;
+    border-top: 1px solid var(--color-dark);
+    border-bottom: 1px solid var(--color-dark);
+    padding: .3em 0;
+}
+
+.article-preview section > * {
+    margin-right: 1em;
+}
+
+.article-preview__author:before {
+    font-family: "Font Awesome 5 Free";
+    margin-right: .3em;
+    content: "\f007";
+}
+
+.article-preview__date:before {
+    font-family: "Font Awesome 5 Free";
+    margin-right: .3em;
+    content: "\f133";
+}
+
+.article-preview__view:before {
+    font-family: "Font Awesome 5 Free";
+    margin-right: .3em;
+    content: "\f06e";
+}
+
+.article-preview p {
+    font-size: 1em;
+    line-height: 1.5;
+    letter-spacing: normal;
+    color: #000;
+    margin: .5em 0;
+}
+
+.pagination {
+    margin: 2em 0 3em;
+}
+
+.pagination > .flex-list {
+    justify-content: center;
+}
+
+.pagination li {
+    margin-right: 1em;
+}
+
+/* Side section */
+
+aside {
+    grid-area: sidebar;
+}
+
+.tags {
+    background-color: #fff;
+    color: var(--color-dark);
+    padding: 1em;
+    align-self: start;
+}
+
+.tags h3 {
+    font-size: 1.5em;
+    font-weight: normal;
+    margin-bottom: 1.5em;
+}
+
+.tags li {
+    margin-right: .5em;
+    margin-bottom: .5em;
+}
+
+/* Site footer */
+
+.footer {
+    grid-area: footer;
+    align-self: end;
+    color: var(--color-light);
+    font-size: .9em;
+    line-height: 4em;
+    text-align: center;
+}
