@@ -1,0 +1,158 @@
+/* Main section */
+
+.content {
+    grid-area: content;
+    display: grid;
+    grid-gap: 1.5em;
+    color: var(--color-dark);
+}
+
+.content h2 {
+    font-size: 2.5em;
+    line-height: 1.2;
+    letter-spacing: -1px;
+    padding-bottom: .5em;
+    margin-bottom: .5em;
+    border-bottom: 1px solid var(--color-light);
+    font-weight: bold;
+}
+
+.post-full img {
+    width: 100%;
+    height: 30vh;
+    object-fit: cover;
+    color: var(--color-light);
+    border: 1px solid;
+}
+
+.post-full footer {
+    text-align: right;
+}
+
+.post-list-layout {
+    list-style: none;
+    display: grid;
+    grid-template-columns: repeat(auto-fill, minmax(280px, 1fr));
+    grid-gap: 1em;
+
+}
+
+.post-card {
+    background-color: #fff;
+    color: #000;
+    border: 1px solid;
+    padding: 1em;
+    display: grid;
+    grid-gap: 1em;
+}
+
+.post-card img {
+    width: 100%;
+    object-fit: cover;
+}
+
+.post-card h3 {
+    font-size: 1.5em;
+    font-weight: bold;
+}
+
+.post-card p {
+    font-size: 1em;
+    line-height: 1.5;
+    letter-spacing: normal;
+    margin: .5em 0;
+}
+
+.post-info {
+    display: flex;
+    flex-wrap: wrap;
+    color: var(--color-dark);
+    border-top: 1px solid;
+    border-bottom: 1px solid;
+    padding-top: .3em;
+}
+
+.post-info > * {
+    font-size: 1em;
+    margin-right: 2em;
+    margin-bottom: .3em;
+}
+
+.post-info__compact > * {
+    font-size: .8em;
+    margin-right: 1em;
+}
+
+.post-info > *:before {
+    font-family: "Font Awesome 5 Free", serif;
+    margin-right: .3em;
+}
+
+.post-info__author:before {
+    content: "\f007";
+}
+
+.post-info__date:before {
+    content: "\f133";
+}
+
+.post-info__view:before {
+    content: "\f06e";
+}
+
+.post-info__tags:before {
+    content: "\f02c";
+}
+
+.post-info__tags {
+    list-style: none;
+    display: flex;
+    align-items: start;
+    flex-wrap: wrap;
+}
+
+.post-info__tags li  {
+    margin-right: .3em;
+    margin-bottom: .3em;
+}
+
+.post-info__tags li:not(:last-child):after {
+    content: ",";
+}
+
+.pagination {
+    margin: 2em 0 3em;
+}
+
+.pagination > .flex-list {
+    justify-content: center;
+}
+
+.pagination ul li {
+    margin-right: 1em;
+}
+
+/* Side section */
+
+aside {
+    grid-area: sidebar;
+    background-color: #fff;
+    color: var(--color-dark);
+    padding: 1em;
+    align-self: start;
+}
+
+aside h3 {
+    font-size: 1.5em;
+    font-weight: normal;
+    margin-bottom: 1em;
+}
+
+.aside-post-list {
+    list-style: square outside;
+    padding-left: 1em;
+}
+
+.aside-post-list li {
+    margin-bottom: 1em;
+}

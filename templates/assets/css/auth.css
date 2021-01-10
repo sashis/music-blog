@@ -1,0 +1,55 @@
+main {
+    grid-column: 1 / -1;
+    align-self: center;
+    justify-self: center;
+    padding: 2em;
+    color: var(--color-dark);
+    background-color: var(--color-light);
+}
+
+main h2 {
+    text-align: center;
+    padding-bottom: 1em;
+    margin-bottom: 1.5em;
+    border-bottom: 1px solid var(--color-bg);
+}
+
+form {
+    width: 100%;
+    display: grid;
+    grid-gap: 1em;
+}
+
+form footer {
+    font-size: .8em;
+    text-align: center;
+}
+
+label {
+    display: grid;
+    align-items: baseline;
+}
+
+input {
+    padding: .5em;
+}
+
+#buttons {
+    margin: 1em auto;
+}
+
+@media (min-width: 768px) {
+    main {
+        width: 40vw;
+    }
+    label {
+        grid-auto-flow: row;
+        grid-template-columns: 4em 1fr;
+    }
+}
+
+@media (min-width: 1200px) {
+    main {
+        width: 30vw;
+    }
+}
