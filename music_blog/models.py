@@ -1,11 +1,10 @@
 from datetime import datetime
-
 import sqlalchemy as sa
-from sqlalchemy.ext.declarative import declarative_base, declared_attr
-from sqlalchemy.orm import relationship
+
+from . import db
 
 
-class CustomBase:
+class BaseModel:
     @declared_attr
     def __tablename__(cls):
         return cls.__name__.lower() + 's'
@@ -18,36 +17,33 @@ class CustomBase:
         return f'<{self.__class__.__name__} {value}>'
 
 
-Base = declarative_base(cls=CustomBase)
-
-
-class User(Base):
+class User(db.Model):
     __repr_attr__ = 'username'
 
-    username = sa.Column(sa.String(64), index=True, unique=True)
-    email = sa.Column(sa.String(128), index=True, unique=True)
-    passwd = sa.Column(sa.String(128), nullable=False)
-    about = sa.Column(sa.String(128))
+    username = db.Column(sa.String(64), index=True, unique=True)
+    email = db.Column(sa.String(128), index=True, unique=True)
+    passwd = db.Column(sa.String(128), nullable=False)
+    about = db.Column(sa.String(128))
 
-    posts = relationship('Post', backref='author')
+    posts = db.relationship('Post', backref='author')
 
 
-class Post(Base):
+class Post(db.Model):
     __repr_attr__ = 'title'
 
-    user_id = sa.Column(
-        sa.Integer,
-        sa.ForeignKey('users.id', onupdate='CASCADE', ondelete='SET NULL')
+    user_id = db.Column(
+        db.Integer,
+        db.ForeignKey('users.id', onupdate='CASCADE', ondelete='SET NULL')
     )
-    title = sa.Column(sa.String(80), nullable=False)
-    description = sa.Column(sa.String(170))
-    body = sa.Column(sa.Text, nullable=False)
-    created_at = sa.Column(sa.DateTime, nullable=False, default=datetime.utcnow())
-    updated_at = sa.Column(sa.DateTime, nullable=False, default= datetime.utcnow(), onupdate=datetime.utcnow())
-    is_published = sa.Column(sa.Boolean, nullable=False, default=False)
+    title = db.Column(db.String(80), nullable=False)
+    description = db.Column(db.String(170))
+    body = db.Column(db.Text, nullable=False)
+    created_at = db.Column(db.DateTime, nullable=False, default=datetime.utcnow())
+    updated_at = db.Column(db.DateTime, nullable=False, default= datetime.utcnow(), onupdate=datetime.utcnow())
+    is_published = db.Column(db.Boolean, nullable=False, default=False)
 
 
-posts_tags = sa.Table(
+posts_tags = db.Table(
     'posts_tags', Base.metadata,
     sa.Column('post_id', sa.Integer, sa.ForeignKey('posts.id')),
     sa.Column('tag_id', sa.Integer, sa.ForeignKey('tags.id'))
