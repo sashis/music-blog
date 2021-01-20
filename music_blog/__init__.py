@@ -1,13 +1,13 @@
 from flask import Flask
 from flask_migrate import Migrate
-from flask_sqlalchemy import SQLAlchemy
 
+import music_blog.models
 from .config import Config
+from .database import db
 
 app = Flask(__name__)
 app.config.from_object(Config)
-db = SQLAlchemy(app)
+db.init_app(app)
 migrate = Migrate(app, db)
 
 import music_blog.views  # noqa: E402
-import music_blog.models  # noqa: E402
