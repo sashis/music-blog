@@ -1,16 +1,16 @@
 [[package]]
 name = "alembic"
-version = "1.4.3"
+version = "1.5.2"
 description = "A database migration tool for SQLAlchemy."
 category = "main"
 optional = false
-python-versions = ">=2.7, !=3.0.*, !=3.1.*, !=3.2.*, !=3.3.*"
+python-versions = "!=3.0.*,!=3.1.*,!=3.2.*,!=3.3.*,!=3.4.*,!=3.5.*,>=2.7"
 
 [package.dependencies]
 Mako = "*"
 python-dateutil = "*"
 python-editor = ">=0.3"
-SQLAlchemy = ">=1.1.0"
+SQLAlchemy = ">=1.3.0"
 
 [[package]]
 name = "atomicwrites"
@@ -52,7 +52,7 @@ python-versions = ">=2.7, !=3.0.*, !=3.1.*, !=3.2.*, !=3.3.*, !=3.4.*"
 
 [[package]]
 name = "faker"
-version = "5.6.1"
+version = "5.6.5"
 description = "Faker is a Python package that generates fake data for you."
 category = "main"
 optional = false
@@ -94,7 +94,7 @@ Flask = "*"
 
 [[package]]
 name = "flask-migrate"
-version = "2.5.3"
+version = "2.6.0"
 description = "SQLAlchemy database migrations for Flask applications using Alembic"
 category = "main"
 optional = false
@@ -149,7 +149,7 @@ i18n = ["Babel (>=0.8)"]
 
 [[package]]
 name = "mako"
-version = "1.1.3"
+version = "1.1.4"
 description = "A super-fast templating language that borrows the  best ideas from the existing templating languages."
 category = "main"
 optional = false
@@ -311,8 +311,8 @@ content-hash = "578b39fbdca708f15e123c916d1ece4f91f18246594df34fd5f4004acd9fff2a
 
 [metadata.files]
 alembic = [
-    {file = "alembic-1.4.3-py2.py3-none-any.whl", hash = "sha256:4e02ed2aa796bd179965041afa092c55b51fb077de19d61835673cc80672c01c"},
-    {file = "alembic-1.4.3.tar.gz", hash = "sha256:5334f32314fb2a56d86b4c4dd1ae34b08c03cae4cb888bc699942104d66bc245"},
+    {file = "alembic-1.5.2-py2.py3-none-any.whl", hash = "sha256:c057488cc8ac7c4d06025ea3907e1a4dd07af70376fa149cf6bd2bc11b43076f"},
+    {file = "alembic-1.5.2.tar.gz", hash = "sha256:a4de8d3525a95a96d59342e14b95cab5956c25b0907dce1549bb4e3e7958f4c2"},
 ]
 atomicwrites = [
     {file = "atomicwrites-1.4.0-py2.py3-none-any.whl", hash = "sha256:6d1784dea7c0c8d4a5172b6c620f40b6e4cbfdf96d783691f2e1302a7b88e197"},
@@ -331,8 +331,8 @@ colorama = [
     {file = "colorama-0.4.4.tar.gz", hash = "sha256:5941b2b48a20143d2267e95b1c2a7603ce057ee39fd88e7329b0c292aa16869b"},
 ]
 faker = [
-    {file = "Faker-5.6.1-py3-none-any.whl", hash = "sha256:e4d981700628a6c428372c3664f22f8e85cd42199bb47434a0c0785176a8efa5"},
-    {file = "Faker-5.6.1.tar.gz", hash = "sha256:818cce31afc6482d8371df783a282b025acc464e7e03d743eb4645c2bf33e3c8"},
+    {file = "Faker-5.6.5-py3-none-any.whl", hash = "sha256:8fe22be90c0db35d830464918f84beb50f970f4caacae4d88e92692857b78aa7"},
+    {file = "Faker-5.6.5.tar.gz", hash = "sha256:0f8198d876bc65edd3699e2542c6ae13cc93fbc4a478c17db190d5d9b6ce790e"},
 ]
 flask = [
     {file = "Flask-1.1.2-py2.py3-none-any.whl", hash = "sha256:8a4fdd8936eba2512e9c85df320a37e694c93945b33ef33c89946a340a238557"},
@@ -343,8 +343,8 @@ flask-login = [
     {file = "Flask_Login-0.5.0-py2.py3-none-any.whl", hash = "sha256:7451b5001e17837ba58945aead261ba425fdf7b4f0448777e597ddab39f4fba0"},
 ]
 flask-migrate = [
-    {file = "Flask-Migrate-2.5.3.tar.gz", hash = "sha256:a69d508c2e09d289f6e55a417b3b8c7bfe70e640f53d2d9deb0d056a384f37ee"},
-    {file = "Flask_Migrate-2.5.3-py2.py3-none-any.whl", hash = "sha256:4dc4a5cce8cbbb06b8dc963fd86cf8136bd7d875aabe2d840302ea739b243732"},
+    {file = "Flask-Migrate-2.6.0.tar.gz", hash = "sha256:8626af845e6071ef80c70b0dc16d373f761c981f0ad61bb143a529cab649e725"},
+    {file = "Flask_Migrate-2.6.0-py2.py3-none-any.whl", hash = "sha256:c1601dfd46b9204233935e5d73473cd7fa959db7a4b0e894c7aa7a9e8aeebf0e"},
 ]
 flask-sqlalchemy = [
     {file = "Flask-SQLAlchemy-2.4.4.tar.gz", hash = "sha256:bfc7150eaf809b1c283879302f04c42791136060c6eeb12c0c6674fb1291fae5"},
@@ -363,8 +363,7 @@ jinja2 = [
     {file = "Jinja2-2.11.2.tar.gz", hash = "sha256:89aab215427ef59c34ad58735269eb58b1a5808103067f7bb9d5836c651b3bb0"},
 ]
 mako = [
-    {file = "Mako-1.1.3-py2.py3-none-any.whl", hash = "sha256:93729a258e4ff0747c876bd9e20df1b9758028946e976324ccd2d68245c7b6a9"},
-    {file = "Mako-1.1.3.tar.gz", hash = "sha256:8195c8c1400ceb53496064314c6736719c6f25e7479cd24c77be3d9361cddc27"},
+    {file = "Mako-1.1.4.tar.gz", hash = "sha256:17831f0b7087c313c0ffae2bcbbd3c1d5ba9eeac9c38f2eb7b50e8c99fe9d5ab"},
 ]
 markupsafe = [
     {file = "MarkupSafe-1.1.1-cp27-cp27m-macosx_10_6_intel.whl", hash = "sha256:09027a7803a62ca78792ad89403b1b7a73a01c8cb65909cd876f7fcebd79b161"},

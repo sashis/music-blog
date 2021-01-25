@@ -1,14 +1,16 @@
 from . import app
-
+from .models import User, Post, Tag
 
 @app.route('/')
 def posts_list():
-    return 'All posts'
+    posts = Post.query.all()
+    return f'{posts}'
 
 
 @app.route('/post/<int:post_id>/')
 def post_detail(post_id):
-    return f'Single post {post_id} page'
+    post = Post.query.get_or_404(post_id)
+    return f'{post}'
 
 
 @app.route('/post/<int:post_id>/img/')
