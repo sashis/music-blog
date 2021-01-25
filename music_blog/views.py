@@ -1,10 +1,12 @@
+from flask import render_template
+
 from . import app
 from .models import User, Post, Tag
 
 @app.route('/')
 def posts_list():
     posts = Post.query.all()
-    return f'{posts}'
+    return render_template('posts_all.html', posts=posts)
 
 
 @app.route('/post/<int:post_id>/')

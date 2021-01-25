@@ -1,0 +1,51 @@
+{% extends 'base.html' %}
+{% block main_content %}
+    <main class="content">
+        <h2>Блог о любимой музыке и темах, с ней связанных</h2>
+        <ul class="post-list-layout" aria-label="Список статей">
+            {% for post in posts %}
+                <li>
+                    <article class="post-card">
+                        <img src="images/article_img.jpg" alt="Изображение статьи">
+                        <h3>{{ post.title }}</h3>
+                        <section class="post-info post-info__compact">
+                            <span class="post-info__author">{{ post.author.username }}</span>
+                            <span class="post-info__date"><time
+                                    datetime="2020-12-01 00:00:00">{{ post.created_at }}</time></span>
+                            <span class="post-info__view">0 просмотров</span>
+                        </section>
+                        <p>{{ post.description }}</p>
+                        <footer>
+                            <a class="btn no-border" href="{{ url_for('post_detail', post_id=post.id) }}">Читать
+                                полностью...</a>
+                        </footer>
+                    </article>
+                </li>
+            {% endfor %}
+        </ul>
+        <nav class="pagination">
+            <ul class="flex-list">
+                <li><a class="btn" href="#">1</a></li>
+                <li><a class="btn" href="#">2</a></li>
+                <li><a class="btn" href="#">3</a></li>
+            </ul>
+        </nav>
+    </main>
+{% endblock %}
+{% block aside_content %}
+    <aside>
+        <h3>Статьи по тэгам</h3>
+        <nav>
+            <ul class="flex-list">
+                <li><a class="btn" href="#">Тэг 1</a></li>
+                <li><a class="btn" href="#">Тэг 2</a></li>
+                <li><a class="btn" href="#">Тэг 3</a></li>
+                <li><a class="btn" href="#">Тэг 4</a></li>
+                <li><a class="btn" href="#">Тэг 5</a></li>
+                <li><a class="btn" href="#">Тэг 6</a></li>
+                <li><a class="btn" href="#">Тэг 7</a></li>
+                <li><a class="btn" href="#">Тэг 8</a></li>
+            </ul>
+        </nav>
+    </aside>
+{% endblock %}

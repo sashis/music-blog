@@ -1,0 +1,29 @@
+<!DOCTYPE html>
+<html lang="ru">
+<head>
+    <meta charset="UTF-8">
+    {% if title %}
+        <title>Моя музыка: {{ title }}</title>
+    {% else %}
+        <title>Моя музыка</title>
+    {% endif %}
+    <meta name="description" content="Тематический блог о любимой музыке и темах, так или иначе с ней связанных.">
+    <meta name="viewport"
+          content="width=device-width, user-scalable=no, initial-scale=1.0, maximum-scale=1.0, minimum-scale=1.0">
+    <meta http-equiv="X-UA-Compatible" content="ie=edge">
+    <link rel="shortcut icon" href="{{ url_for('static', filename='logo.svg') }}">
+    <link rel="stylesheet" href="{{ url_for('static', filename='css/fonts.css') }}">
+    <link rel="stylesheet" href="{{ url_for('static', filename='css/common.css') }}">
+    <link rel="stylesheet" href="{{ url_for('static', filename='css/main.css') }}">
+{#    <link rel="stylesheet" href="{{ url_for('static', filename='css/auth.css') }}">#}
+</head>
+<body>
+<header class="header full-width-bar">
+    <h1 class="header__logo"><a href="{{ url_for('posts_list') }}">Моя музыка</a></h1>
+    <a class="header__login" href="login.html">Вход</a>
+</header>
+{% block main_content %}{% endblock %}
+{% block aside_content %}{% endblock %}
+<footer class="main-footer full-width-bar">2021 &copy; Моя музыка</footer>
+</body>
+</html>
