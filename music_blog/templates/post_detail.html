@@ -13,7 +13,7 @@
             <span class="post-info__author">{{ post.author.username }}</span>
             <span class="post-info__date"><time
                     datetime="{{ post.created_at }}">{{ post.created_at.date() }}</time></span>
-            <span class="post-info__view">0 просмотров!!!</time></span>
+            <span class="post-info__view">{{ post.view_count }} просмотр(ов)</span>
             <ul class="post-info__tags">
                 {% for tag in post.tags %}
                     <li><a class="link" href="{{ url_for('posts_list_by_tag', item_id=tag.id) }}">{{ tag.name }}</a></li>

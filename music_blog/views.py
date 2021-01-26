@@ -1,7 +1,8 @@
 from flask import render_template, send_from_directory, request
 
-from . import app
+from . import app, db
 from .models import User, Post, Tag
+
 
 @app.route('/')
 def posts_list(item_id=None):
@@ -19,12 +20,13 @@ def posts_list(item_id=None):
 @app.route('/posts/<int:post_id>/')
 def post_detail(post_id):
     post = Post.query.get_or_404(post_id)
+    post.view_count += 1
+    db.session.commit()
     return render_template('post_detail.html', post=post)
 
 
 @app.route('/post/<int:post_id>/img/')
 def post_image(post_id):
-    app.logger.debug(f'{request.referrer=}')
     post = Post.query.get_or_404(post_id)
     return send_from_directory(app.config['UPLOADS'], post.img_filename)
 
