@@ -1,7 +1,11 @@
 {% extends 'base.html' %}
+{% block  custom_styles %}
+    <link rel="stylesheet" href="{{ url_for('static', filename='css/main.css') }}">
+{% endblock %}
+
 {% block main_content %}
     <main class="content">
-        <h2>Блог о любимой музыке и темах, с ней связанных</h2>
+        <h2>{{ header }}</h2>
         <ul class="post-list-layout" aria-label="Список статей">
             {% for post in pagination.items %}
                 <li>
@@ -27,9 +31,10 @@
             <ul class="flex-list">
                 {% for page in range(1, pagination.pages + 1) %}
                     {% if page == pagination.page %}
-                    <li><a class="btn" aria-current="page">{{ page }}</a></li>
+                        <li><a class="btn" aria-current="page">{{ page }}</a></li>
                     {% else %}
-                    <li><a class="btn" href="{{ url_for('posts_list', page=page) }}">{{ page }}</a></li>
+                        <li><a class="btn"
+                               href="{{ url_for(request.endpoint, item_id=item_id, page=page) }}">{{ page }}</a></li>
                     {% endif %}
                 {% endfor %}
             </ul>
@@ -43,7 +48,7 @@
         <nav>
             <ul class="flex-list">
                 {% for tag in tags %}
-                    <li><a class="btn" href="#">{{ tag.name }}</a></li>
+                    <li><a class="btn" href="{{ url_for('posts_list_by_tag', item_id=tag.id) }}">{{ tag.name }}</a></li>
                 {% endfor %}
             </ul>
         </nav>
