@@ -129,10 +129,20 @@
 
 .pagination > .flex-list {
     justify-content: center;
+    align-items: baseline;
 }
 
 .pagination ul li {
     margin-right: 1em;
+}
+
+.pagination ul li {
+    margin-right: 1em;
+}
+
+[aria-current] {
+    font-size: 1.2em;
+    border: 2px solid;
 }
 
 /* Side section */

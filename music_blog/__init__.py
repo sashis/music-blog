@@ -16,7 +16,8 @@ db.init_app(app)
 
 migrations_path = Path(__file__).parent / 'migrations'
 migrate = Migrate(app, db, migrations_path)
+
+
 with app.app_context():
-    print(app.logger)
     create_demo_data()
 import music_blog.views  # noqa: E402
