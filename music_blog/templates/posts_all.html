@@ -6,7 +6,7 @@
             {% for post in posts %}
                 <li>
                     <article class="post-card">
-                        <img src="images/article_img.jpg" alt="Изображение статьи">
+                        <img src="{{ url_for('post_image', post_id=post.id) }}" alt="Изображение статьи">
                         <h3>{{ post.title }}</h3>
                         <section class="post-info post-info__compact">
                             <span class="post-info__author">{{ post.author.username }}</span>
@@ -37,14 +37,9 @@
         <h3>Статьи по тэгам</h3>
         <nav>
             <ul class="flex-list">
-                <li><a class="btn" href="#">Тэг 1</a></li>
-                <li><a class="btn" href="#">Тэг 2</a></li>
-                <li><a class="btn" href="#">Тэг 3</a></li>
-                <li><a class="btn" href="#">Тэг 4</a></li>
-                <li><a class="btn" href="#">Тэг 5</a></li>
-                <li><a class="btn" href="#">Тэг 6</a></li>
-                <li><a class="btn" href="#">Тэг 7</a></li>
-                <li><a class="btn" href="#">Тэг 8</a></li>
+                {% for tag in tags %}
+                    <li><a class="btn" href="#">{{ tag.name }}</a></li>
+                {% endfor %}
             </ul>
         </nav>
     </aside>

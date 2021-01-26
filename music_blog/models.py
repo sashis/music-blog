@@ -12,7 +12,7 @@ class User(db.Model):
     username = db.Column(db.String(64), unique=True)
     email = db.Column(db.String(128), unique=True)
     _password = db.Column('password_hash', db.String(128), nullable=False)
-    posts = db.relationship('Post', backref='author')
+    posts = db.relationship('Post', backref='author', lazy=True)
 
     @hybrid_property
     def password(self):
