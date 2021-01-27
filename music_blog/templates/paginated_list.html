@@ -10,7 +10,7 @@
             {% for post in pagination.items %}
                 <li>
                     <article class="post-card">
-                        <img src="{{ url_for('post_image', post_id=post.id) }}" alt="Изображение статьи">
+                        <img src="{{ url_for('blog.post_image', post_id=post.id) }}" alt="Изображение статьи">
                         <h3>{{ post.title }}</h3>
                         <section class="post-info post-info__compact">
                             <span class="post-info__author">{{ post.author.username }}</span>
@@ -20,7 +20,7 @@
                         </section>
                         <p>{{ post.description }}</p>
                         <footer>
-                            <a class="btn no-border" href="{{ url_for('post_detail', post_id=post.id) }}">Читать
+                            <a class="btn no-border" href="{{ url_for('blog.post_detail', post_id=post.id) }}">Читать
                                 полностью...</a>
                         </footer>
                     </article>
@@ -48,7 +48,8 @@
         <nav>
             <ul class="flex-list">
                 {% for tag in tags %}
-                    <li><a class="btn" href="{{ url_for('posts_list_by_tag', item_id=tag.id) }}">{{ tag.name }}</a></li>
+                    <li><a class="btn" href="{{ url_for('blog.posts_list_by_tag', item_id=tag.id) }}">{{ tag.name }}</a>
+                    </li>
                 {% endfor %}
             </ul>
         </nav>

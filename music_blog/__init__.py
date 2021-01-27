@@ -6,7 +6,8 @@ from flask_migrate import Migrate
 import music_blog.models
 from .config import Config
 from .database import db
-from .auth import login_manager
+from .auth import auth, login_manager
+from .blog import blog
 from .commands import create_demo_data
 
 
@@ -19,7 +20,8 @@ login_manager.init_app(app)
 migrations_path = Path(__file__).parent / 'migrations'
 migrate = Migrate(app, db, migrations_path)
 
-
 with app.app_context():
     create_demo_data()
-import music_blog.views  # noqa: E402
+
+app.register_blueprint(auth)
+app.register_blueprint(blog)
