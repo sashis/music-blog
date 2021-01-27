@@ -24,8 +24,13 @@ class User(db.Model, UserMixin):
     def password(self, plain_passwd):
         self._password = generate_password_hash(plain_passwd)
 
-    def check_password(self,plain_passwd):
+    def check_password(self, plain_passwd):
         return check_password_hash(self.password, plain_passwd)
+
+    @classmethod
+    def is_exist(cls, username, email):
+        user = cls.query.filter((cls.username == username) | (cls.email == email))
+        return user.first() is not None
 
 
 posts_tags = db.Table(

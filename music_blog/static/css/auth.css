@@ -17,6 +17,7 @@ main h2 {
 form {
     width: 100%;
     display: grid;
+    align-items: baseline;
     grid-gap: 1em;
 }
 
@@ -27,19 +28,20 @@ form .btn {
 }
 
 .message {
+    grid-column: 1 / -1;
     text-align: center;
     color: orangered;
     font-size: 0.9em;
 }
 
 form footer {
+    grid-column: 1 / -1;
     font-size: .8em;
     text-align: center;
 }
 
 label {
-    display: grid;
-    align-items: baseline;
+    margin-bottom: -0.8em;
 }
 
 input {
@@ -47,21 +49,31 @@ input {
 }
 
 #buttons {
+    grid-column: 1 / -1;
     margin: 1em auto;
 }
 
 @media (min-width: 768px) {
     main {
-        width: 40vw;
+        width: 50vw;
+    }
+    form {
+        grid-auto-flow: row;
+        grid-template-columns: max-content 1fr;
     }
     label {
-        grid-auto-flow: row;
-        grid-template-columns: 4em 1fr;
+        justify-self: right;
+    }
+}
+
+@media (min-width: 992px) {
+    main {
+        width: 40vw;
     }
 }
 
 @media (min-width: 1200px) {
     main {
-        width: 30vw;
+        width: 35vw;
     }
 }
