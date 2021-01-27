@@ -24,7 +24,7 @@ def post_detail(post_id):
     post = Post.query.get_or_404(post_id)
     post.view_count += 1
     db.session.commit()
-    return render_template('post_detail.html', post=post)
+    return render_template('post_detail.html', post=post, title=post.title)
 
 
 @blog.route('/post/<int:post_id>/img/')
@@ -40,6 +40,7 @@ def posts_list_by_tag(item_id):
     posts_by_tag = tag.posts.order_by(Post.created_at.desc())
     context = {
         'header': f'Статьи с тегом "{tag.name}"',
+        'title': f'{tag.name}',
         'item_id': item_id,
         'pagination': posts_by_tag.paginate(page, current_app.config['POST_PER_PAGE'], False),
         'tags': Tag.query.all()
