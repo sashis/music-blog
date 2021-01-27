@@ -1,0 +1,33 @@
+{% extends 'base.html' %}
+
+{% block custom_styles %}
+    <link rel="stylesheet" href="{{ url_for('static', filename='css/auth.css') }}">
+{% endblock %}
+
+{% block main_content %}
+    <main>
+        <h2>Авторизация</h2>
+        <form method="POST">
+            {{ form.csrf_token }}
+            <label>
+                {{ form.username.label }}
+                {{ form.username }}
+            </label>
+            <label>
+                {{ form.password.label }}
+                {{ form.password }}
+            </label>
+            {% for message in get_flashed_messages() %}
+                <span class="message">{{ message }}</span>
+            {% endfor %}
+            <div id="buttons">
+                <button class="btn">Ок</button>
+                <a class="btn" href="{{ request.referrer }}">Отмена</a>
+            </div>
+            <footer>
+                <a class="link" href="{{ url_for('auth.register') }}">Зарегистрироваться</a>, если ещё не создан
+                аккаунт.
+            </footer>
+        </form>
+    </main>
+{% endblock %}

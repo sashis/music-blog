@@ -20,6 +20,18 @@ form {
     grid-gap: 1em;
 }
 
+form .btn {
+    cursor: pointer;
+    text-decoration: none;
+    background-color: var(--color-bg);
+}
+
+.message {
+    text-align: center;
+    color: orangered;
+    font-size: 0.9em;
+}
+
 form footer {
     font-size: .8em;
     text-align: center;
