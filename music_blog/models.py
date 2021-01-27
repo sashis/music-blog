@@ -1,5 +1,6 @@
 from datetime import datetime
 
+from sqlalchemy import func
 from sqlalchemy.ext.hybrid import hybrid_property
 from werkzeug.security import generate_password_hash, check_password_hash
 
@@ -53,3 +54,8 @@ class Post(db.Model):
         db.ForeignKey('users.id', onupdate='CASCADE', ondelete='SET NULL')
     )
     tags = db.relationship(Tag, secondary=posts_tags, backref=db.backref('posts', lazy='dynamic'), lazy='dynamic')
+
+    @property
+    def by_same_author(self):
+        cls = type(self)
+        return cls.query.with_parent(self.author).filter(cls.id != self.id).order_by(func.random())
