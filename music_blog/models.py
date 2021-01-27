@@ -1,5 +1,6 @@
 from datetime import datetime
 
+from flask_login import UserMixin
 from sqlalchemy import func
 from sqlalchemy.ext.hybrid import hybrid_property
 from werkzeug.security import generate_password_hash, check_password_hash
@@ -7,7 +8,7 @@ from werkzeug.security import generate_password_hash, check_password_hash
 from .database import db
 
 
-class User(db.Model):
+class User(db.Model, UserMixin):
     __repr_attr__ = 'username'
 
     username = db.Column(db.String(64), unique=True)
