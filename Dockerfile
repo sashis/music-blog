@@ -1,13 +1,17 @@
 FROM python:3.9-slim
 
-RUN apt-get update \
-    && apt-get install -y gcc libpq-dev nginx \
-    && useradd --no-create-home nginx \
-    && apt-get clean
 WORKDIR /app
-COPY ./app .
-RUN pip install .
+COPY poetry.lock pyproject.toml ./
+RUN apt-get update \
+    && apt-get install -y --no-install-recommends build-essential gcc libpq-dev nginx \
+    && pip install poetry wheel \
+    && poetry config virtualenvs.create false \
+    && poetry install --no-interaction --no-ansi\
+    && apt-get autoremove -y gcc \
+    && apt-get clean \
+    && useradd --no-create-home nginx
 USER nginx
 EXPOSE 5000
-VOLUME ["/app/instance/"]
+VOLUME ["/app_data"]
+COPY . .
 CMD ["uwsgi", "--socket=0.0.0.0:5000", "--protocol=http", "-w", "music_blog:app"]

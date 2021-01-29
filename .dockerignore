@@ -1,4 +1,3 @@
-!app/
-app/instance/
-__pycache__/
-*.sqlite*
+app_data/
+templates/
+\.*

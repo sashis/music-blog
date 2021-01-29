@@ -35,6 +35,7 @@ def fake_post(faker, users, tags):
 
 
 def create_demo_data(user_count=3, post_count=60, tag_count=10):
+    print(f'{db}')
     db.drop_all()
     db.create_all()
     faker = Faker('ru-RU')
