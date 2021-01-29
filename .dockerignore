@@ -1,0 +1,4 @@
+!app/
+app/instance/
+__pycache__/
+*.sqlite*
