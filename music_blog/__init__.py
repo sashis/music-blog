@@ -1,26 +1,32 @@
 from pathlib import Path
 
+import click
 from flask import Flask
+from flask.cli import FlaskGroup
 from flask_migrate import Migrate
 
 from .auth import auth, login_manager
 from .blog import blog
-from .config import Config
-from .commands import create_demo_data
+from .config import get_config
+from .commands import fake_db
 from .database import db
 
 
-app = Flask(__name__)
-app.config.from_object(Config)
+def create_app(mode):
+    app = Flask(__name__)
+    app.config.from_object(get_config(mode))
 
-db.init_app(app)
-login_manager.init_app(app)
+    db.init_app(app)
+    login_manager.init_app(app)
 
-migrations_path = Path(__file__).parent / 'migrations'
-migrate = Migrate(app, db, migrations_path)
+    migrations_path = Path(__file__).parent / 'migrations'
+    Migrate(app, db, migrations_path)
+    app.cli.add_command(fake_db)
+    app.register_blueprint(auth)
+    app.register_blueprint(blog)
+    return app
 
-with app.app_context():
-    create_demo_data()
 
-app.register_blueprint(auth)
-app.register_blueprint(blog)
+@click.group(cls=FlaskGroup, create_app=create_app)
+def cli():
+    """Management script for the Music Blog application."""

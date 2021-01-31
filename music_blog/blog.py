@@ -7,6 +7,7 @@ blog = Blueprint('blog', __name__)
 
 
 @blog.route('/')
+@blog.route('/posts/')
 def posts_list(item_id=None):
     page = request.args.get('page', 1, type=int)
     posts = Post.query.order_by(Post.created_at.desc())
@@ -27,13 +28,13 @@ def post_detail(post_id):
     return render_template('post_detail.html', post=post, title=post.title)
 
 
-@blog.route('/post/<int:post_id>/img/')
+@blog.route('/posts/<int:post_id>/img/')
 def post_image(post_id):
     post = Post.query.get_or_404(post_id)
     return send_from_directory(current_app.config['UPLOADS'], post.img_filename)
 
 
-@blog.route('/tag/<int:item_id>/')
+@blog.route('/tags/<int:item_id>/')
 def posts_list_by_tag(item_id):
     page = request.args.get('page', 1, type=int)
     tag = Tag.query.get_or_404(item_id)

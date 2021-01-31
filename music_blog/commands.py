@@ -1,5 +1,7 @@
 import random
 from pathlib import Path
+import click
+from flask.cli import with_appcontext
 from faker import Faker
 from flask import current_app
 
@@ -34,8 +36,10 @@ def fake_post(faker, users, tags):
     return post
 
 
-def create_demo_data(user_count=3, post_count=60, tag_count=10):
-    print(f'{db}')
+@click.command(name='demo')
+@with_appcontext
+def fake_db(user_count=3, post_count=60, tag_count=10):
+    """Fill the application db with a fake data."""
     db.drop_all()
     db.create_all()
     faker = Faker('ru-RU')

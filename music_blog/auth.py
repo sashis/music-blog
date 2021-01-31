@@ -15,7 +15,7 @@ def load_user(user_id):
     return User.query.get(user_id)
 
 
-@auth.route('/login', methods=['GET', 'POST'])
+@auth.route('/login/', methods=['GET', 'POST'])
 def login():
     if current_user.is_authenticated:
         return redirect('/')
@@ -31,7 +31,7 @@ def login():
     return render_template('login.html', title='Авторизация', form=form)
 
 
-@auth.route('/register', methods=['GET', 'POST'])
+@auth.route('/register/', methods=['GET', 'POST'])
 def register():
     if current_user.is_authenticated:
         return redirect('/')
@@ -52,7 +52,7 @@ def register():
     return render_template('register.html', title='Регистрация', form=form)
 
 
-@auth.route('/logout')
+@auth.route('/logout/')
 def logout():
     logout_user()
     return redirect(url_for('blog.posts_list'))
