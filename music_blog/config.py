@@ -7,7 +7,7 @@ storage_path = Path(__file__).parent.joinpath('../app_data').resolve()
 class Config:
     DEBUG = False
     TESTING = False
-    POST_PER_PAGE = os.getenv('MUSIC_BLOG_POST_PER_PAGE') or 6
+    POST_PER_PAGE = os.getenv('MUSIC_BLOG_POSTS_PER_PAGE') or 6
     SECRET_KEY = os.getenv('MUSIC_BLOG_SECRET_KEY') or os.urandom(16)
     SQLALCHEMY_DATABASE_URI = os.getenv('MUSIC_BLOG_DSN') or f'sqlite:///{storage_path}/db.sqlite3'
     SQLALCHEMY_TRACK_MODIFICATIONS = False
