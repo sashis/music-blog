@@ -8,7 +8,6 @@ services:
     environment:
       MUSIC_BLOG_DSN: postgresql+psycopg2://${DB_USER}:${DB_PASS}@db/music_blog
       MUSIC_BLOG_UPLOADS: /app_data/uploads
-      MUSIC_BLOG_DEMO: 'yes'
     networks:
       - default
     ports:

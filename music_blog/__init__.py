@@ -15,6 +15,7 @@ from .database import db
 def create_app(mode):
     app = Flask(__name__)
     app.config.from_object(get_config(mode))
+    Path(app.config['UPLOADS']).mkdir(parents=True, exist_ok=True)
 
     db.init_app(app)
     login_manager.init_app(app)
