@@ -23,7 +23,7 @@ def posts_list(item_id=None):
 @blog.route('/posts/<int:post_id>/')
 def post_detail(post_id):
     post = Post.query.get_or_404(post_id)
-    post.view_count += 1
+    post.view_count = Post.view_count + 1
     db.session.commit()
     return render_template('post_detail.html', post=post, title=post.title)
 
