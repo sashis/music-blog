@@ -6,7 +6,7 @@ services:
     depends_on:
       - db
     environment:
-      MUSIC_BLOG_DSN: postgresql+psycopg2://bloguser:blogpass@db/music_blog
+      MUSIC_BLOG_DSN: postgresql+psycopg2://${DB_USER}:${DB_PASS}@db/music_blog
       MUSIC_BLOG_UPLOADS: /app_data/uploads
       MUSIC_BLOG_DEMO: 'yes'
     networks:
@@ -19,11 +19,11 @@ services:
 
   db:
     environment:
-      POSTGRES_USER: bloguser
-      POSTGRES_PASSWORD: blogpass
+      POSTGRES_USER: ${DB_USER}
+      POSTGRES_PASSWORD: ${DB_PASS}
       POSTGRES_DB: music_blog
       PGDATA: /var/lib/postgresql/data/music_blog
-    image: postgres:latest
+    image: postgres:12
     networks:
       - default
     ports:
